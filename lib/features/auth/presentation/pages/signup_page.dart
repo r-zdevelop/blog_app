@@ -14,7 +14,19 @@ class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    final nameController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     _formKey.currentState?.validate(); // Validate the form on build
+
+    @override
+    void dispose() {
+      nameController.dispose();
+      emailController.dispose();
+      passwordController.dispose();
+      super.dispose();
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(15),
@@ -28,13 +40,17 @@ class _SignupPageState extends State<SignupPage> {
                 style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 30),
-              const AuthField(hintText: 'Name'),
+              AuthField(hintText: 'Name', controller: nameController),
               const SizedBox(height: 15),
-              const AuthField(hintText: 'Email'),
+              AuthField(hintText: 'Email', controller: emailController),
               const SizedBox(height: 15),
-              const AuthField(hintText: 'Password'),
+              AuthField(
+                hintText: 'Password',
+                controller: passwordController,
+                isObscuredText: true,
+              ),
               const SizedBox(height: 20),
-              const AuthGradientButton(),
+              const AuthGradientButton(text: 'Sign Up'),
               const SizedBox(height: 20),
               RichText(
                 text: TextSpan(
