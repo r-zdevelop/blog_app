@@ -31,6 +31,7 @@ class _SignupPageState extends State<SignupPage> {
     }
 
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Form(
