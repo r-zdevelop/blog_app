@@ -1,4 +1,4 @@
-import 'package:blog_app/core/errors/failure.dart';
+import 'package:blog_app/core/errors/failures.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract interface class AuthRepository {
