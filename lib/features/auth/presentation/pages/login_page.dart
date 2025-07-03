@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 isObscuredText: true,
               ),
               const SizedBox(height: 20),
-              const AuthGradientButton(text: 'Login'),
+              AuthGradientButton(text: 'Login', onPressed: () {}),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
