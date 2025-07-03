@@ -7,10 +7,26 @@ import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:blog_app/features/auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables
+  try {
+    await dotenv.load();
+  } catch (e) {
+    throw Exception('Error: .env file not found.');
+  }
+
+  // Validate that secrets are configured
+  if (!AppSecrets.isConfigured) {
+    throw Exception(
+      'Supabase credentials not configured. Please check your .env file or environment variables.',
+    );
+  }
+
   final supabase = await Supabase.initialize(
     url: AppSecrets.supabaseUrl,
     anonKey: AppSecrets.supabaseAnonKey,
