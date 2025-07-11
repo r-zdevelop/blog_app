@@ -21,3 +21,8 @@ final class AuthLoginEvent extends AuthEvent {
 
   AuthLoginEvent({required this.email, required this.password});
 }
+
+final class AuthIsUserLoggedInEvent extends AuthEvent {
+  // This event is used to check if a user is logged in.
+  // It does not require any parameters.
+}
